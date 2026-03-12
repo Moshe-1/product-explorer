@@ -1,0 +1,14 @@
+[
+  { "id": "1", "name": "The Psychology of Money", "description": "Timeless lessons on wealth, greed, and happiness.", "price": 45.99, "category": "Finance", "imageUrl": "assets/images/book1.jpg", "inventoryStatus": "INSTOCK" },
+  { "id": "2", "name": "How Innovation Works", "description": "A history of innovation and how it flourishes in freedom.", "price": 38.50, "category": "Business", "imageUrl": "assets/images/book2.jpg", "inventoryStatus": "INSTOCK" },
+  { "id": "3", "name": "The Two Towers", "description": "Frodo and Sam continue their perilous journey to Mordor.", "price": 42.00, "category": "Fantasy", "imageUrl": "assets/images/book3.jpg", "inventoryStatus": "LOWSTOCK" },
+  { "id": "4", "name": "Milk and Honey", "description": "A collection of poetry and prose about survival and healing.", "price": 55.00, "category": "Poetry", "imageUrl": "assets/images/book4.jpg", "inventoryStatus": "INSTOCK" },
+  { "id": "5", "name": "The Fine Print", "description": "A romantic story about a theme park heir and a dream chaser.", "price": 49.99, "category": "Romance", "imageUrl": "assets/images/book5.jpg", "inventoryStatus": "INSTOCK" },
+  { "id": "6", "name": "Twisted Love", "description": "A story of a forbidden romance between a brother's best friend.", "price": 35.00, "category": "Romance", "imageUrl": "assets/images/book6.jpg", "inventoryStatus": "OUTOFSTOCK" },
+  { "id": "7", "name": "Will", "description": "The candid and inspiring memoir of Will Smith.", "price": 41.50, "category": "Biography", "imageUrl": "assets/images/book7.jpg", "inventoryStatus": "INSTOCK" },
+  { "id": "8", "name": "Cereal", "description": "A travel and style magazine focused on curated inspiration.", "price": 60.00, "category": "Lifestyle", "imageUrl": "assets/images/book8.jpg", "inventoryStatus": "INSTOCK" },
+  { "id": "9", "name": "Shadow and Bone", "description": "A teenage orphan discovers a power that could save her world.", "price": 39.99, "category": "Fantasy", "imageUrl": "assets/images/book9.jpg", "inventoryStatus": "LOWSTOCK" },
+  { "id": "10", "name": "Waves", "description": "A poetic novel following six friends through their lives.", "price": 29.99, "category": "Classics", "imageUrl": "assets/images/book10.jpg", "inventoryStatus": "INSTOCK" },
+  { "id": "11", "name": "Fourth Wing", "description": "A brutal and elite war college for dragon riders.", "price": 44.00, "category": "Fantasy", "imageUrl": "assets/images/book11.jpg", "inventoryStatus": "INSTOCK" },
+  { "id": "12", "name": "Deep Work", "description": "Rules for focused success in a distracted world.", "price": 47.50, "category": "Productivity", "imageUrl": "assets/images/book12.jpg", "inventoryStatus": "INSTOCK" }
+]
