@@ -1,1 +1,35 @@
-<p>catalog works!</p>
+<section class="catalog-container">
+  <div class="page-intro">
+    <h2>Product Catalog</h2>
+    <p>Explore our curated collection of technical books.</p>
+  </div>
+
+  <div class="catalog-controls">
+    <input
+      type="search"
+      placeholder="Search books..."
+      (input)="updateSearch($event)"
+      class="search-bar"
+    />
+    <span class="item-counter"> Showing {{ productService.filteredProducts().length }} items </span>
+  </div>
+
+  @if (productService.isLoading()) {
+    <div class="loading-spinner">Loading products...</div>
+  } @else if (productService.error()) {
+    <div class="error-msg">{{ productService.error() }}</div>
+  } @else {
+    <div class="product-grid">
+      @for (product of productService.filteredProducts(); track product.id) {
+        <article class="product-card">
+          <img [src]="product.imageUrl" [alt]="product.name" />
+          <h3>{{ product.name }}</h3>
+          <p>{{ product.price | currency }}</p>
+          <button [routerLink]="['/product', product.id]">View Details</button>
+        </article>
+      } @empty {
+        <p>No products found matching your search.</p>
+      }
+    </div>
+  }
+</section>
