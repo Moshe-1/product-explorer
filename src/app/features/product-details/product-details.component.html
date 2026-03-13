@@ -1,1 +1,21 @@
-<p>product-details works!</p>
+<section class="details-container">
+  <div class="page-intro">
+    <h2>Product Details</h2>
+    <p>Details of {{ product()?.name }}</p>
+  </div>
+
+  @if (product(); as p) {
+    <article class="details-card">
+      <img [src]="p.imageUrl" [alt]="p.name" />
+      <h1>{{ p.name }}</h1>
+      <p class="price">{{ p.price | currency }}</p>
+      <p>{{ p.description }}</p>
+
+      <button (click)="fav.toggleFavorite(p.id)">
+        {{ fav.ids().includes(p.id) ? '❤️ Remove from Favorites' : '🤍 Add to Favorites' }}
+      </button>
+    </article>
+  } @else {
+    <p>Product not found.</p>
+  }
+</section>
