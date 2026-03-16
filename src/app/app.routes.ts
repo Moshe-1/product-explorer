@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { adminGuard } from './core/guards/admin.guard';
-
+import { loadRemoteModule } from '@angular-architects/module-federation';
 export const routes: Routes = [
   {
     path: '',
@@ -15,9 +15,11 @@ export const routes: Routes = [
   {
     path: 'product/:id',
     loadComponent: () =>
-      import('./features/product-details/product-details.component').then(
-        (m) => m.ProductDetailsComponent,
-      ),
+      loadRemoteModule({
+        type: 'module',
+        remoteEntry: 'http://localhost:4201/remoteEntry.js',
+        exposedModule: './Component',
+      }).then((m) => m.ProductDetailsComponent),
   },
   {
     path: 'favorites',

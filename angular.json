@@ -15,17 +15,16 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular/build:application",
+          "builder": "ngx-build-plus:browser",
           "options": {
-            "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
-            ],
-            "styles": ["src/styles.css"]
+            "assets": ["src/assets"],
+            "styles": ["src/styles.css"],
+            "main": "src/main.ts",
+            "outputPath": "dist/product-explorer",
+            "index": "src/index.html",
+            "extraWebpackConfig": "webpack.config.js",
+            "commonChunk": false
           },
           "configurations": {
             "production": {
@@ -41,7 +40,8 @@
                   "maximumError": "8kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "extraWebpackConfig": "webpack.prod.config.js"
             },
             "development": {
               "optimization": false,
@@ -52,16 +52,22 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular/build:dev-server",
+          "builder": "ngx-build-plus:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "product-explorer:build:production"
+              "buildTarget": "product-explorer:build:production",
+              "extraWebpackConfig": "webpack.prod.config.js"
             },
             "development": {
               "buildTarget": "product-explorer:build:development"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          "options": {
+            "port": 4200,
+            "publicHost": "http://localhost:4200",
+            "extraWebpackConfig": "webpack.config.js"
+          }
         },
         "test": {
           "builder": "@angular/build:unit-test"
@@ -70,6 +76,89 @@
           "builder": "@angular-eslint/builder:lint",
           "options": {
             "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
+          }
+        }
+      }
+    },
+    "product-details-mfe": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/product-details-mfe",
+      "sourceRoot": "projects/product-details-mfe/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "ngx-build-plus:browser",
+          "options": {
+            "tsConfig": "projects/product-details-mfe/tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/product-details-mfe/public",
+                "output": "."
+              }
+            ],
+            "styles": ["projects/product-details-mfe/src/styles.css"],
+            "main": "projects/product-details-mfe/src/main.ts",
+            "outputPath": "dist/product-details-mfe",
+            "index": "projects/product-details-mfe/src/index.html",
+            "extraWebpackConfig": "projects/product-details-mfe/webpack.config.js",
+            "commonChunk": false
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+                }
+              ],
+              "outputHashing": "all",
+              "extraWebpackConfig": "projects/product-details-mfe/webpack.prod.config.js"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "ngx-build-plus:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "product-details-mfe:build:production",
+              "extraWebpackConfig": "projects/product-details-mfe/webpack.prod.config.js"
+            },
+            "development": {
+              "buildTarget": "product-details-mfe:build:development"
+            }
+          },
+          "defaultConfiguration": "development",
+          "options": {
+            "port": 4201,
+            "publicHost": "http://localhost:4201",
+            "extraWebpackConfig": "projects/product-details-mfe/webpack.config.js"
+          }
+        },
+        "test": {
+          "builder": "@angular/build:unit-test"
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/product-details-mfe/**/*.ts",
+              "projects/product-details-mfe/**/*.html"
+            ],
+            "eslintConfig": "projects/product-details-mfe/eslint.config.js"
           }
         }
       }
