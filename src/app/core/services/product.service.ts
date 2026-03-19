@@ -7,6 +7,9 @@ import { delay, catchError, of, tap } from 'rxjs';
 export class ProductService {
   private http = inject(HttpClient);
 
+  constructor() {
+    this.loadProducts();
+  }
   // State Signals
   products = signal<Product[]>([]);
   isLoading = signal<boolean>(false);

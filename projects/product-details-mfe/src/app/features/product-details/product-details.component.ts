@@ -15,10 +15,9 @@ export class ProductDetailsComponent implements OnInit{
   private productService = inject(ProductService);
   protected fav = inject(FavoritesService);
   private productId = signal<string>('');
-  // Router passes 'id'  withComponentInputBinding  configured in app config
   @Input() set id(value: string) {
     this.productId.set(value);
-  } 
+  }
 
   product = computed(() =>
     this.productService.filteredProducts().find((p: Product) => p.id === this.productId()),

@@ -12,11 +12,11 @@ import { Product } from '../../core/models/product.model';
   styleUrl: './favorites.component.css',
 })
 export class FavoritesComponent {
-  private productService = inject(ProductService);
+  protected productService = inject(ProductService);
   protected fav = inject(FavoritesService);
 
   favoriteProducts = computed(() => {
     const favIds = this.fav.ids();
-    return this.productService.filteredProducts().filter((p: Product) => favIds.includes(p.id));
+    return this.productService.products().filter((p: Product) => favIds.includes(p.id));
   });
 }

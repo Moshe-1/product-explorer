@@ -1,23 +1,27 @@
 <section class="favorites-container">
   <h2>Your Favorites</h2>
 
-  <div class="favorites-grid">
-    @for (product of favoriteProducts(); track product.id) {
-      <article class="favorites-card">
-        <img [src]="product.imageUrl" [alt]="product.name" />
-        <h3>{{ product.name }}</h3>
-        <p>{{ product.price | currency }}</p>
+  @if (productService.isLoading()) {
+    <div class="loader">Loading your favorites...</div>
+  } @else {
+    <div class="favorites-grid">
+      @for (product of favoriteProducts(); track product.id) {
+        <article class="favorites-card">
+          <img [src]="product.imageUrl" [alt]="product.name" />
+          <h3>{{ product.name }}</h3>
+          <p>{{ product.price | currency }}</p>
 
-        <div class="card-actions">
-          <button [routerLink]="['/product', product.id]">View</button>
-          <button (click)="fav.toggleFavorite(product.id)" class="btn-remove">Remove</button>
+          <div class="card-actions">
+            <button [routerLink]="['/product', product.id]">View</button>
+            <button (click)="fav.toggleFavorite(product.id)" class="btn-remove">Remove</button>
+          </div>
+        </article>
+      } @empty {
+        <div class="empty-state">
+          <p>You haven't added any books to your favorites yet.</p>
+          <a routerLink="/catalog">Browse Catalog</a>
         </div>
-      </article>
-    } @empty {
-      <div class="empty-state">
-        <p>You haven't added any books to your favorites yet.</p>
-        <a routerLink="/catalog">Browse Catalog</a>
-      </div>
-    }
-  </div>
+      }
+    </div>
+  }
 </section>
